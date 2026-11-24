@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf4ee">
+  <meta name="description" content="You are warmly invited to celebrate a wedding with us.">
+  <title>A Wedding Invitation</title>
+  <style>
+    :root { color-scheme: light; --ink:#43352f; --rose:#a65c64; --gold:#b99a65; --paper:#fffaf5; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; min-height:100vh; font-family:Georgia,'Times New Roman',serif; color:var(--ink); background:#f7eee7; }
+    .scene { position:relative; overflow:hidden; min-height:100vh; padding:clamp(18px,5vw,54px) 16px; display:flex; justify-content:center; align-items:center; background:radial-gradient(ellipse at top,#fffaf6 0%,#f6eae4 55%,#e9d5d0 100%); }
+    .card { position:relative; z-index:1; width:min(100%,650px); padding:clamp(30px,8vw,70px) clamp(22px,6vw,58px); text-align:center; background:rgba(255,250,245,.94); border:1px solid #d8bda5; box-shadow:0 18px 60px rgba(90,55,45,.14); animation:arrive 1.2s ease-out both; }
+    .card:before { content:""; position:absolute; inset:9px; border:1px solid rgba(185,154,101,.38); pointer-events:none; }
+    .flourish { color:var(--gold); font-size:30px; line-height:1; letter-spacing:9px; }
+    .eyebrow { margin:22px 0 0; color:#866e5c; text-transform:uppercase; font:600 11px/1.6 Arial,sans-serif; letter-spacing:3px; }
+    h1 { margin:24px 0 12px; font-size:clamp(43px,10vw,76px); line-height:1.04; font-weight:400; color:#8c5057; }
+    .amp { display:block; color:var(--gold); font-size:.6em; font-style:italic; margin:5px 0; }
+    .intro { font-style:italic; line-height:1.8; font-size:clamp(16px,4vw,19px); margin:20px auto 26px; max-width:430px; }
+    .divider { width:90px; height:1px; background:var(--gold); margin:24px auto; position:relative; }
+    .divider:after { content:'✦'; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); padding:0 9px; color:var(--gold); background:var(--paper); font-size:13px; }
+    .label { margin:18px 0 8px; font:600 10px/1.5 Arial,sans-serif; text-transform:uppercase; letter-spacing:2.5px; color:#a1786e; }
+    .detail { margin:5px 0; font-size:clamp(17px,4.2vw,21px); line-height:1.55; }
+    .address { color:#796b62; font-size:15px; line-height:1.65; margin:6px auto; max-width:390px; }
+    .buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:28px 0 18px; }
+    .button { display:inline-block; padding:13px 21px; border:1px solid #a9676c; color:#fff; background:#a9676c; font:600 11px/1.4 Arial,sans-serif; letter-spacing:1.2px; text-transform:uppercase; text-decoration:none; transition:transform .2s,background .2s; }
+    .button.secondary { background:transparent; color:#8d5359; }
+    .button:hover { transform:translateY(-2px); background:#8c5057; color:#fff; }
+    .button:focus-visible { outline:3px solid #6c4345; outline-offset:4px; }
+    .note { margin:20px 0 0; color:#8b7a70; font-size:14px; font-style:italic; line-height:1.6; }
+    .petal { position:absolute; top:-30px; width:15px; height:21px; border-radius:80% 0 80% 0; background:rgba(193,125,133,.24); pointer-events:none; animation:fall 12s linear infinite; }
+    .p1{left:7%;animation-delay:-2s}.p2{left:18%;animation-delay:-8s;animation-duration:15s}.p3{left:34%;animation-delay:-5s;animation-duration:13s}.p4{left:62%;animation-delay:-10s}.p5{left:79%;animation-delay:-4s;animation-duration:16s}.p6{left:93%;animation-delay:-9s;animation-duration:14s}
+    @keyframes arrive { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fall { from { transform:translateY(-5vh) rotate(0deg); } to { transform:translateY(115vh) rotate(480deg); } }
+    @media (prefers-reduced-motion:reduce) { *, *:before, *:after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } .petal { display:none; } }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div aria-hidden="true"><span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span><span class="petal p5"></span><span class="petal p6"></span></div>
+    <article class="card">
+      <div class="flourish" aria-hidden="true">✧ ❀ ✧</div>
+      <p class="eyebrow">Together with their families</p>
+      <h1><span id="person1">Aisha</span><span class="amp">&amp;</span><span id="person2">Daniel</span></h1>
+      <p class="intro">joyfully invite you to celebrate their wedding and the beginning of their new adventure together.</p>
+      <div class="divider" aria-hidden="true"></div>
+      <p class="label">The celebration</p>
+      <p class="detail" id="date">November 20, 2027</p>
+      <p class="detail" id="time">4:00 PM · Local time</p>
+      <p class="label">The venue</p>
+      <p class="detail" id="venue">The Garden Pavilion</p>
+      <p class="address" id="address">123 Celebration Lane, Your City</p>
+      <div class="buttons">
+        <a class="button" id="rsvp" href="mailto:rsvp@example.com?subject=Wedding%20RSVP">RSVP by email</a>
+        <a class="button secondary" id="map" href="https://www.google.com/maps/search/?api=1&amp;query=123%20Celebration%20Lane%2C%20Your%20City" target="_blank" rel="noopener noreferrer">View location</a>
+      </div>
+      <p class="note" id="note">Please respond by October 20, 2027.<br>We can't wait to celebrate with you.</p>
+      <div class="flourish" aria-hidden="true" style="margin-top:25px">✧</div>
+    </article>
+  </main>
+  <script>
+    // EDIT YOUR WEDDING DETAILS HERE. Keep each value inside quotation marks.
+    // Use a real email and a real address before sharing the invitation.
+    const wedding = {
+      person1: 'Aisha',
+      person2: 'Daniel',
+      date: 'November 20, 2027',
+      time: '4:00 PM · Local time',
+      venue: 'The Garden Pavilion',
+      address: '123 Celebration Lane, Your City',
+      rsvpEmail: 'rsvp@example.com',
+      note: 'Please respond by October 20, 2027. We can\'t wait to celebrate with you.'
+    };
+    ['person1','person2','date','time','venue','address','note'].forEach(function (key) {
+      document.getElementById(key).textContent = wedding[key];
+    });
+    document.title = wedding.person1 + ' & ' + wedding.person2 + ' | Wedding Invitation';
+    document.getElementById('rsvp').href = 'mailto:' + wedding.rsvpEmail + '?subject=' + encodeURIComponent('Wedding RSVP for ' + wedding.person1 + ' & ' + wedding.person2) + '&body=' + encodeURIComponent('Name(s):\nNumber of guests:\nAttending: Yes / No\n');
+    document.getElementById('map').href = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(wedding.venue + ', ' + wedding.address);
+  </script>
+</body>
+</html>
